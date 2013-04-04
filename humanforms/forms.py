@@ -36,8 +36,11 @@ class HumanMixin(object):
         super(HumanMixin, self).__init__(*args, **kwargs)
 
         if getattr(settings, "ROBOT_PROTECTION", True):
-            self.fields['human_question'] = forms.CharField(widget=Removeable,
-                                                            required=False)
+            self.fields['human_question'] = forms.CharField(
+                label="",
+                widget=Removeable,
+                required=False
+            )
 
     def clean(self):
         data = super(HumanMixin, self).clean()
